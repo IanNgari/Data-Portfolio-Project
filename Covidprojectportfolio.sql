@@ -75,7 +75,7 @@ ORDER BY 1, 2
 
 SELECT cvd.continent, cvd.location, cvd.population, cvd.date, cvv.new_vaccinations
 		, SUM(cast(cvv.new_vaccinations as float)) OVER (partition by cvd.location order by cvd.location, cvd.date ROWS UNBOUNDED PRECEDING)
-		as RollingPeopleVaccinated--gives me an error if command ROWS UNBOUNDED PRECEDING is not included
+		as RollingPeopleVaccinated--(gives me an error if command ROWS UNBOUNDED PRECEDING is not included)
 FROM PortfolioProject..CovidDeaths as cvd 
 JOIN PortfolioProject..Covidvaccinations as cvv
 	ON cvd.location = cvv.location
